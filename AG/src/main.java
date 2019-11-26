@@ -1,10 +1,15 @@
+import java.io.IOException;
 import java.util.Random;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
 
 public class main {
 
 	// Declaracao das variaveis
 	// Populacao
-	private static int tamPopulacao = 10;
+	private static int tamPopulacao = 2;
 	private static int tamCromossomo = 10;
 	private static int nAulas = 9;
 	private static int[][] populacao = new int[tamPopulacao][tamCromossomo];
@@ -24,6 +29,13 @@ public class main {
 	static int pontuacaoFinal = 3000;
 
 	public static void main(String[] args) {
+		
+		try {
+			LeituraDeDados.lerXML();
+		} catch (ParserConfigurationException | SAXException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		// Cria primeira Populacao de Cromossomos,
 		// cada cromossomo sera uma linha de uma matriz,
@@ -43,7 +55,7 @@ public class main {
 
 		// Laco de repeticao, repete ate o programa achar valor menor que a pontuacao
 		// desejada(OBJETIVO)
-		int OBJETIVO = 1;
+		int OBJETIVO = 1000;
 		while (menorPontuacao > OBJETIVO) {
 
 			// Gera a nova populacao

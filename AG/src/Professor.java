@@ -2,13 +2,13 @@
 public class Professor {
 	private int id;
 	private String nome;
-	private int[] disponibilidade;
+	private int[][] disponibilidade;
 
 	public Professor() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Professor(int id, String nome, int[] disponibilidade) {
+	public Professor(int id, String nome, int[][] disponibilidade) {
 		this.id = id;
 		this.nome = nome;
 		this.disponibilidade = disponibilidade;
@@ -22,7 +22,7 @@ public class Professor {
 		this.nome = nome;
 	}
 
-	public int[] getDisponibilidade() {
+	public int[][] getDisponibilidade() {
 		return disponibilidade;
 	}
 
@@ -34,7 +34,7 @@ public class Professor {
 		return nome;
 	}
 
-	public void setDisponibilidade(int[] disponibilidade) {
+	public void setDisponibilidade(int[][] disponibilidade) {
 		this.disponibilidade = disponibilidade;
 	}
 	

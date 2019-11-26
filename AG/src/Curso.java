@@ -2,7 +2,9 @@
 public class Curso {
 	private int id;
 	private String nome;
-	private int qtdFases;
+	private String sigla;
+	private int horario[][];
+	private int fase;
 
 	public Curso() {
 		// TODO Auto-generated constructor stub
@@ -11,7 +13,7 @@ public class Curso {
 	public Curso(int id, String nome, int qtdFases) {
 		this.id = id;
 		this.nome = nome;
-		this.qtdFases = qtdFases;
+
 	}
 
 	public void setId(int id) {
@@ -21,9 +23,17 @@ public class Curso {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
+	public void setSigla(String sigla) {
+		this.sigla = sigla;
+	}
+	
+	public void setHorario(int[][] horario) {
+		this.horario = horario;
+	}
 
-	public void setQtdFases(int qtdFases) {
-		this.qtdFases = qtdFases;
+	public void setFase(int fase) {
+		this.fase = fase;
 	}
 
 	public int getId() {
@@ -33,9 +43,17 @@ public class Curso {
 	public String getNome() {
 		return nome;
 	}
+	
+	public String getSigla() {
+		return sigla;
+	}
+	
+	public int[][] getHorario() {
+		return horario;
+	}
 
-	public int getQtdFases() {
-		return qtdFases;
+	public int getFase() {
+		return fase;
 	}
 
 }
