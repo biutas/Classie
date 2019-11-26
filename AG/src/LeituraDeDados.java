@@ -45,7 +45,7 @@ public class LeituraDeDados {
 	}
 	
 	public static List<Professor> lerProfessores(NodeList professorNodes){
-		
+
 		List<Professor> professores = new ArrayList<Professor>();
 		for (int i = 0; i < professorNodes.getLength(); i++) {
 			
@@ -55,7 +55,7 @@ public class LeituraDeDados {
 				
 				Professor professor = new Professor();
 				
-				Element professorElement = (Element) professorNodes;
+				Element professorElement = (Element) professorNode;
 				
 				String horarios[] = professorElement.getAttribute("timeoff").replace(".", "").split(",");
 				
@@ -63,15 +63,13 @@ public class LeituraDeDados {
 				
 				for (int i1 = 0; i1 < horarios.length; i1++) {
 					for (int j = 0; j < horarios[i1].length(); j++) {
-						valorInt[j][i1] = Integer.parseInt(horarios[i1].substring(i1, i1+1));
-						System.out.println(valorInt[i1]);
+						valorInt[i1][j] = Integer.parseInt(horarios[i1].substring(i1, i1+1));
 					}
 				}
 				
 				professor.setDisponibilidade( valorInt );
 				professor.setId(Integer.parseInt(professorElement.getAttribute("id")));
 				professor.setNome(professorElement.getAttribute("name"));
-				System.out.println(professorElement.getAttribute("name"));
 				
 				professores.add(professor);
 				
@@ -91,7 +89,7 @@ public class LeituraDeDados {
 				
 				Curso curso = new Curso();
 				
-				Element cursoElement = (Element) cursoNodes;
+				Element cursoElement = (Element) cursoNode;
 				
 				String horarios[] = cursoElement.getAttribute("timeoff").replace(".", "").split(",");
 				
@@ -99,8 +97,7 @@ public class LeituraDeDados {
 				
 				for (int i1 = 0; i1 < horarios.length; i1++) {
 					for (int j = 0; j < horarios[i1].length(); j++) {
-						valorInt[j][i1] = Integer.parseInt(horarios[i1].substring(i1, i1+1));
-						System.out.println(valorInt[i1]);
+						valorInt[i1][j] = Integer.parseInt(horarios[i1].substring(i1, i1+1));
 					}
 				}
 
@@ -127,7 +124,7 @@ public static List<Aula> lerAulas(NodeList aulasNodes){
 				
 				Aula aula = new Aula();
 				
-				Element aulaElement = (Element) aulasNodes;
+				Element aulaElement = (Element) aulaNode;
 				
 				String horarios[] = aulaElement.getAttribute("timeoff").replace(".", "").split(",");
 				
@@ -145,7 +142,8 @@ public static List<Aula> lerAulas(NodeList aulasNodes){
 				Professor p = null;
 				
 				for (int j = 0; j < valorInt.length; j++) {
-					if(Integer.parseInt(aulaElement.getAttribute("teacherid")) == professores.get(j).getId()) {
+					if(!aulaElement.getAttribute("teacherid").equals("") && (Integer.parseInt(aulaElement.getAttribute("teacherid"))) 
+							== professores.get(j).getId()) {
 						p = professores.get(j);
 					}
 				}
@@ -160,7 +158,5 @@ public static List<Aula> lerAulas(NodeList aulasNodes){
 		}
 		return aulas;	
 	}
-	
-	
 
 }
