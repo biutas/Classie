@@ -42,7 +42,6 @@ public class LeituraDeDados {
 		System.out.println("Carregando Aulas...");
 		aulas = lerAulas(aulaNodes);
 		
-		
 	}
 	
 	public static List<Professor> lerProfessores(NodeList professorNodes){
